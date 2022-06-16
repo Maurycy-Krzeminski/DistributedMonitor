@@ -10,7 +10,7 @@ class ProcessMessages {
     fun processTokenMessage(aMessage: Message, aToken: MutableList<Token?>, aState: State) {
         aMessage.state?.let {
             aState.deserialize(it)
-            aMessage.token?.let { tok -> aToken.set(0,tok) }
+            aMessage.token?.let { tok -> aToken.set(0, tok) }
 
         }
     }

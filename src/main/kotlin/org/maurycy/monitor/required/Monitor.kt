@@ -18,7 +18,7 @@ class Monitor<T : State>(
     private val numberOfProcesses = aPeers.size
     private val rn: MutableList<Int> = MutableList(numberOfProcesses) { 0 }
     private val format = Json { classDiscriminator = "#class" }
-    private val token: MutableList<Token?> = MutableList(1){null}
+    private val token: MutableList<Token?> = MutableList(1) { null }
 
     private var state: T = aConstructor()
 
@@ -29,10 +29,10 @@ class Monitor<T : State>(
 
     init {
         if (this.aId == 0) {
-            token[0]=Token(mutableListOf(), MutableList(numberOfProcesses) { 0 })
+            token[0] = Token(mutableListOf(), MutableList(numberOfProcesses) { 0 })
         }
 
-        CoroutineScope(Dispatchers.IO).launch{
+        CoroutineScope(Dispatchers.IO).launch {
             start()
         }
     }
@@ -43,10 +43,10 @@ class Monitor<T : State>(
                 val string = zmqCommunicator.receive()
                 val message = format.decodeFromString<Message>(string)
                 if (message.id == 0) {
-                    processMessages.processRequestMessage(message,rn)
+                    processMessages.processRequestMessage(message, rn)
                 } else if (message.id.minus(1) == this@Monitor.aId) {
                     lock.withLock {
-                        processMessages.processTokenMessage(message,token,state)
+                        processMessages.processTokenMessage(message, token, state)
                         condition.signalAll()
                     }
                 }
@@ -75,6 +75,7 @@ class Monitor<T : State>(
             }
         }
     }
+
     private fun updateQueueAndTryToSendToken() {
         token[0]!!.LN[this.aId] = rn[this.aId]
 
@@ -92,6 +93,7 @@ class Monitor<T : State>(
             token[0] = null
         }
     }
+
     fun fin() {
         var remainingTimeout = aFinishTimeout
         while (token[0] != null && remainingTimeout > 0) {

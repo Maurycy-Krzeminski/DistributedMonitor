@@ -23,6 +23,7 @@ class ZmqCommunicator(
             }
         }
     }
+
     fun receive(): String = subSocket.recvStr()
     fun sendRequestMessage(aSenderNumber: Int, aRN: Int) {
         pubSocket.send(format.encodeToString(Message(id = 0, aSenderNumber + 1, aRN, token = null, state = null)))

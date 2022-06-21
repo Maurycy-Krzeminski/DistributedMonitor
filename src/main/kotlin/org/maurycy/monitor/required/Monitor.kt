@@ -99,7 +99,7 @@ class Monitor<T : State>(
 
     fun fin() {
         var remainingTimeout = aFinishTimeout
-        while (blockingQueue.element() != null && remainingTimeout > 0) {
+        while (blockingQueue.size > 0 && remainingTimeout > 0) {
             updateQueueAndTryToSendToken()
             Thread.sleep(50)
             remainingTimeout -= 50

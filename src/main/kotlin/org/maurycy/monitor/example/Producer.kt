@@ -6,7 +6,7 @@ import org.maurycy.monitor.required.Monitor
 fun main() {
     val monitor = Monitor(::IntList, aId = 0, aPeers = peers)
 
-    (1..101).forEach {
+    (1..100).forEach {
         monitor.run({
             data.size < 5
         }) {

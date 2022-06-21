@@ -1,9 +1,9 @@
 package org.maurycy.monitor.required
 
 @kotlinx.serialization.Serializable
-sealed interface State {
+abstract class State {
 
-    fun serialize(): String
-    fun deserialize(aInput: String)
+    abstract fun serialize(): String
+    abstract fun deserialize(aInput: String)
 
 }

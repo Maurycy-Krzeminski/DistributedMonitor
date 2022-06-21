@@ -1,6 +1,5 @@
 package org.maurycy.monitor.example
 
-import org.maurycy.monitor.required.IntList
 import org.maurycy.monitor.required.Monitor
 
 

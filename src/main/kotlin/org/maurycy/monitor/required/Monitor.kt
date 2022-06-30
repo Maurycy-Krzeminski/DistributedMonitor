@@ -60,6 +60,7 @@ class Monitor<T : State>(
                 rn[this.aId]++
                 zmqCommunicator.sendRequestMessage(this.aId, this.rn[this.aId])
             }
+
             val token = blockingQueue.take()
 
 //            lock.withLock {

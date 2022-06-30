@@ -5,7 +5,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.maurycy.monitor.required.State
 
-@kotlinx.serialization.Serializable
+//@kotlinx.serialization.Serializable
 class IntList : State() {
     var data = mutableListOf<Int>()
     override fun serialize(): String {

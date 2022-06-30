@@ -1,6 +1,6 @@
 package org.maurycy.monitor.required
 
-@kotlinx.serialization.Serializable
+//@kotlinx.serialization.Serializable
 abstract class State {
 
     abstract fun serialize(): String

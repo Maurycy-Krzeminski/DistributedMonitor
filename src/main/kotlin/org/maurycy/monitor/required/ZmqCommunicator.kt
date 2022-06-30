@@ -36,17 +36,17 @@ class ZmqCommunicator(
     }
 
     private fun composeTokenMessage(aToken: Token, aProcessNumber: Int, aState: State): String {
-        println(
-            "composeTokenMessage" + format.encodeToString(
-                Message(
-                    id = aProcessNumber,
-                    senderNumber = null,
-                    requestNumber = null,
-                    token = aToken,
-                    state = aState.serialize()
-                )
-            )
-        )
+//        println(
+//            "composeTokenMessage" + format.encodeToString(
+//                Message(
+//                    id = aProcessNumber,
+//                    senderNumber = null,
+//                    requestNumber = null,
+//                    token = aToken,
+//                    state = aState.serialize()
+//                )
+//            )
+//        )
         return format.encodeToString(
             Message(
                 id = aProcessNumber,
